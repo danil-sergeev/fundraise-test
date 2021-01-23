@@ -4,7 +4,7 @@ import { ScopedContainer } from "../container";
 import {
   DonateDtoInput,
   DonateUseCase,
-} from "../../core/donations/application/usecases/donate";
+} from "@app/core/donations/application/usecases/donate";
 import donateSchema from "../validation/schema/donate.json";
 import { handleError } from "./utils";
 

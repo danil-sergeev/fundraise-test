@@ -56,11 +56,14 @@ const App = defineComponent({
       const nextCurrency = this.currencies.find((i) => i.prefix === v)!;
       this.$store.commit(MutationTypes.SET_CURRENT_CURRENCY_ID, nextCurrency.id);
     },
-    async donate(): Promise<void> {
-      return this.$store.dispatch(Actions.DONATE, {
-        amount: this.donationAmount,
-        currency: this.currentCurrency.id,
-      });
+    // eslint-disable-next-line consistent-return
+    donate() {
+      if (this.donationAmount) {
+        this.$store.dispatch(Actions.DONATE, {
+          amount: this.donationAmount,
+          currency: this.currentCurrency.id,
+        });
+      }
     },
   },
   computed: {

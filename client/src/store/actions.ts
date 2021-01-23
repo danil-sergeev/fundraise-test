@@ -3,8 +3,9 @@ import { ActionContext, ActionTree } from 'vuex';
 import { StatusCodes } from 'http-status-codes';
 import { TMutations, MutationTypes } from '@/store/mutations';
 import { TState } from '@/store/state';
-import { _fetch, createApiEndpoint } from '@/utils/_fetch';
+import { createApiEndpoint } from '@/utils/_fetch';
 
+// eslint-disable-next-line no-shadow
 export enum Actions {
     DONATE = 'DONATE',
 }
@@ -31,12 +32,12 @@ export interface TActions {
 export const actions: ActionTree<TState, TState> & TActions = {
   async [Actions.DONATE]({ commit }, payload) {
     try {
-      const response = await _fetch({
-        endpoint: createApiEndpoint('/donate'),
-        opts: {
-          method: 'POST',
+      const response = await fetch(createApiEndpoint('/donate'), {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: {
+          'Content-Type': 'application/json',
         },
-        payload,
       });
 
       const data = await response.json();
