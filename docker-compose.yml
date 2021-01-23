@@ -1,0 +1,56 @@
+version: "3.9"
+services:
+  fundraiseup_client:
+    image: fundraiseup_client:latest
+    networks:
+      - default
+    ports:
+      - 80:80
+      - 443:443
+    build:
+      context: client/.
+      dockerfile: Dockerfile
+    environment:
+      VUE_APP_SERVER_URL: http://localhost:8000
+    restart: always
+    depends_on:
+      - fundraiseup_server
+
+  fundraiseup_server:
+    image: fundraiseup_server:latest
+    networks:
+      - default
+    ports:
+      - 8000:8000
+    volumes:
+      - ./server:/opt/app
+      - /opt/app/node_modules
+      - /opt/app/dist
+    build:
+      context: server/.
+      dockerfile: Dockerfile
+      args:
+        SERVICE_PORT: 8000
+    environment:
+      NODE_ENV: production
+      DB_HOST: fundraiseup_mongo
+      DB_NAME: fundraise
+      DB_PORT: 27017
+      DB_PASS: 1+92[`x,KB&ueG2cFD*8ZYa5Spg2zpwz
+      DB_USER: fundraise_user
+    restart: always
+    depends_on:
+      - fundraiseup_mongo
+
+  fundraiseup_mongo:
+    image: mongo:latest
+    restart: always
+    volumes:
+      - ./data/db:/data/db
+      - ./docker/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: fundraise_user
+      MONGO_INITDB_ROOT_PASSWORD: 1+92[`x,KB&ueG2cFD*8ZYa5Spg2zpwz
+      MONGO_INITDB_DATABASE: fundraise
+    ports:
+      - "27017:27017"
