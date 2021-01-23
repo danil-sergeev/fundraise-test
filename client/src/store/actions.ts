@@ -5,7 +5,7 @@ import { TMutations, MutationTypes } from '@/store/mutations';
 import { TState } from '@/store/state';
 import { _fetch, createApiEndpoint } from '@/utils/_fetch';
 
-export enum TActionTypes {
+export enum Actions {
     DONATE = 'DONATE',
 }
 
@@ -22,14 +22,14 @@ type AugmentedActionContext = {
 } & Omit<ActionContext<TState, TState>, 'commit'>
 
 export interface TActions {
-    [TActionTypes.DONATE](
+    [Actions.DONATE](
         { commit }: AugmentedActionContext,
         payload: TDonatePayload
     ): Promise<void>
 }
 
 export const actions: ActionTree<TState, TState> & TActions = {
-  async [TActionTypes.DONATE]({ commit }, payload) {
+  async [Actions.DONATE]({ commit }, payload) {
     try {
       const response = await _fetch({
         endpoint: createApiEndpoint('/donate'),

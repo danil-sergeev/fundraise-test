@@ -13,7 +13,7 @@ import {
 import { TState, state } from './state';
 import { TGetters, getters } from './getters';
 import { TMutations, mutations } from './mutations';
-import { TActions, actions } from './TActionTypes';
+import { TActions, actions } from './actions';
 
 export const store = createStore({
   state,
