@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "target": "es5",
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "sourceMap": false,
+    "baseUrl": "./",
+    "paths": {
+      "@app/*": ["./*"]
+    },
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "lib": [
+      "dom",
+      "es5",
+      "scripthost",
+      "es2015.promise"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

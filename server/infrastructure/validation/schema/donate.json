@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "required": ["amount", "currency"],
+  "properties": {
+    "amount": {
+      "type": "number",
+      "minimum": 0.1
+    },
+    "currency": {
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  }
+}
