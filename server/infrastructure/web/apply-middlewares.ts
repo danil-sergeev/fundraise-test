@@ -3,6 +3,7 @@ import koaBody from "koa-body";
 import koaLogger from "koa-logger";
 import koaHelmet from "koa-helmet";
 import { donationRouter } from "./donation";
+import { healthRouter } from "./health";
 import { container } from "../container";
 
 export const applyKoaMiddlewares = (app: Koa): void => {
@@ -14,4 +15,5 @@ export const applyKoaMiddlewares = (app: Koa): void => {
     return next();
   });
   app.use(donationRouter.routes()).use(donationRouter.allowedMethods());
+  app.use(healthRouter.routes()).use(healthRouter.allowedMethods());
 };
