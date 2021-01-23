@@ -10,9 +10,9 @@ services:
     build:
       context: client/.
       dockerfile: Dockerfile
-    environment:
-      VUE_APP_SERVER_URL: http://localhost:8000
     restart: always
+    environment:
+      NODE_ENV: production
     depends_on:
       - fundraiseup_server
 
@@ -32,9 +32,10 @@ services:
       args:
         SERVICE_PORT: 8000
     environment:
+      SERVER_URL: http://localhost:8000
       NODE_ENV: production
       DB_HOST: fundraiseup_mongo
-      DB_NAME: fundraise
+      DB_NAME: admin
       DB_PORT: 27017
       DB_PASS: 1+92[`x,KB&ueG2cFD*8ZYa5Spg2zpwz
       DB_USER: fundraise_user
