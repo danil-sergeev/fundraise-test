@@ -4,7 +4,7 @@
       {{prefix}}
     </span>
     <input
-        v-model="value"
+        v-model.number="value"
         @keypress="onlyNumber"
     >
     <select v-model="prefix">
@@ -50,19 +50,14 @@ const DonateInput = defineComponent({
       get(): number {
         return this.modelValue;
       },
-      set(value: string) {
-        // eslint-disable-next-line radix
-        if (parseInt(value) >= 0) {
-          const emitValue = parseFloat(value);
-          this.$emit('update:modelValue', emitValue);
-        }
+      set(value: number) {
+        if (value >= 0) this.$emit('update:modelValue', value);
       },
     },
   },
   methods: {
     onlyNumber($event: KeyboardEvent) {
       const keyCode = $event.keyCode ? $event.keyCode : $event.which;
-      console.log(keyCode);
       if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) {
         $event.preventDefault();
       }

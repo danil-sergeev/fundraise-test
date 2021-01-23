@@ -5,7 +5,7 @@ import {
   ObjectID,
   ObjectIdColumn,
 } from "typeorm";
-import { DonationCurrencies } from "../../../../core/donations/domain/donation-domain";
+import { DonationCurrencies } from "@app/core/donations/domain/donation-domain";
 
 @Entity()
 export class Donation {
