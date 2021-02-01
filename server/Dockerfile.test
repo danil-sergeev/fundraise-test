@@ -1,0 +1,18 @@
+FROM node:lts-alpine
+
+WORKDIR /opt/app
+COPY package*.json ./
+COPY tsconfig*.json ./
+COPY babel.config.js ./
+COPY healthcheck.js /
+
+COPY jest.config.ts ./
+COPY jest.globalSetup.ts ./
+
+COPY ./core ./core
+COPY ./infrastructure ./infrastructure
+COPY ./index.ts ./
+
+RUN npm install --quiet
+
+CMD ["npm", "run", "test"]

@@ -4,11 +4,13 @@ import { ScopedContainer } from "../container";
 import {
   DonateDtoInput,
   DonateUseCase,
-} from "@app/core/donations/application/usecases/donate";
+} from "../../core/donations/application/usecases/donate";
 import donateSchema from "../validation/schema/donate.json";
 import { handleError } from "./utils";
 
-export const donationRouter = new Router<{}, ScopedContainer>();
+export const donationRouter = new Router<{}, ScopedContainer>({
+  prefix: "/api",
+});
 
 donationRouter.post("/donate", async (ctx) => {
   try {

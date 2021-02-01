@@ -31,7 +31,7 @@ import { defineComponent } from 'vue';
 import Badge from '@/components/Badge.vue';
 import DonateInput from '@/components/DonateInput.vue';
 
-import { MutationTypes } from '@/store/mutations';
+import { TMutationTypes } from '@/store/mutations';
 import { currencies } from '@/utils/const';
 import { Actions } from '@/store/actions';
 
@@ -50,11 +50,11 @@ const App = defineComponent({
       return this.presets[idx] === this.donationAmount;
     },
     setDonateAmount(v: number): void {
-      this.$store.commit(MutationTypes.SET_DONATION_AMOUNT, v);
+      this.$store.commit(TMutationTypes.SET_DONATION_AMOUNT, v);
     },
     setActiveCurrencyId(v: string): void {
       const nextCurrency = this.currencies.find((i) => i.prefix === v)!;
-      this.$store.commit(MutationTypes.SET_CURRENT_CURRENCY_ID, nextCurrency.id);
+      this.$store.commit(TMutationTypes.SET_CURRENT_CURRENCY_ID, nextCurrency.id);
     },
     // eslint-disable-next-line consistent-return
     donate() {
@@ -72,7 +72,7 @@ const App = defineComponent({
         return this.$store.state.donationAmount;
       },
       set(v: number): void {
-        this.$store.commit(MutationTypes.SET_DONATION_AMOUNT, v);
+        this.$store.commit(TMutationTypes.SET_DONATION_AMOUNT, v);
       },
     },
     donateIsAllowed(): boolean {

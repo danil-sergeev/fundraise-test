@@ -2,8 +2,8 @@ import { Connection } from "typeorm";
 import { container, setupContainer } from "../../../container";
 import { DonationDbRepository } from "../repository/donation-repository";
 import {
-  DonationDomain,
   DonationCurrencies,
+  DonationDomain,
 } from "../../../../core/donations/domain/donation-domain";
 
 setupContainer();
