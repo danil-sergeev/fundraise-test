@@ -6,10 +6,6 @@
     "resolveJsonModule": true,
     "outDir": "./dist",
     "sourceMap": false,
-    "baseUrl": "./",
-    "paths": {
-      "@app/*": ["./*"]
-    },
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "lib": [

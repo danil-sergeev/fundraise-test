@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 import { ActionContext, ActionTree } from 'vuex';
 import { StatusCodes } from 'http-status-codes';
-import { TMutations, MutationTypes } from '@/store/mutations';
+import { TMutations, TMutationTypes } from '@/store/mutations';
 import { TState } from '@/store/state';
 import { createApiEndpoint } from '@/utils/_fetch';
 
@@ -48,7 +48,7 @@ export const actions: ActionTree<TState, TState> & TActions = {
         window.alert(data.message);
       }
     } finally {
-      commit(MutationTypes.SET_DONATION_AMOUNT, 0);
+      commit(TMutationTypes.SET_DONATION_AMOUNT, 0);
     }
   },
 };

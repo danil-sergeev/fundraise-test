@@ -1,10 +1,8 @@
-import "module-alias/register";
 import "reflect-metadata";
-
+import { Connection } from "typeorm";
 import { container, setupContainer } from "./infrastructure/container";
 import { ServerRun } from "./infrastructure/web/server";
 import { getEnv } from "./infrastructure/config/get-env";
-import { Connection } from "typeorm";
 
 setupContainer();
 

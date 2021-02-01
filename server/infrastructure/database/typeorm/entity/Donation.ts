@@ -1,11 +1,6 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  ObjectID,
-  ObjectIdColumn,
-} from "typeorm";
-import { DonationCurrencies } from "@app/core/donations/domain/donation-domain";
+import { Column, CreateDateColumn, Entity, ObjectIdColumn } from "typeorm";
+import { ObjectID } from "mongodb";
+import { DonationCurrencies } from "../../../../core/donations/domain/donation-domain";
 
 @Entity()
 export class Donation {

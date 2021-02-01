@@ -1,7 +1,8 @@
 import { EntityTarget, MongoRepository } from "typeorm";
+import { ObjectId } from "mongodb";
 import { Donation } from "../entity/Donation";
-import { DonationRepository } from "@app/core/donations/application/repository";
-import { DonationDomain } from "@app/core/donations/domain/donation-domain";
+import { DonationRepository } from "../../../../core/donations/application/repository";
+import { DonationDomain } from "../../../../core/donations/domain/donation-domain";
 
 export class DonationDbRepository implements DonationRepository {
   private mongoManager: MongoRepository<Donation>;
@@ -27,10 +28,9 @@ export class DonationDbRepository implements DonationRepository {
     newDonation.amount = data.amount;
     newDonation.currency = data.currency;
     newDonation.createdAt = data.createdAt;
+    newDonation.id = ObjectId.createFromHexString(data.id);
 
-    const { insertedId } = await this.mongoManager.insertOne(newDonation);
-    newDonation.id = insertedId;
-
+    await this.mongoManager.insertOne(newDonation);
     return this._encodeModel(newDonation);
   }
 }

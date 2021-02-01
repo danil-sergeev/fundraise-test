@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import Ajv, { JSONSchemaType } from "ajv";
-import { Validator } from "@app/core/validation/validator";
 import { RestError } from "../errors/rest-error";
+import { Validator } from "../../core/validation/validator";
 
 export class AjvValidator extends Validator {
   constructor(private readonly ajv: Ajv) {
